@@ -12,23 +12,24 @@ class App extends Component {
         return (
             <Router>
                 <div className="container">
-                    <Link to={"/"} className="navbar-brand">Confronting Debt</Link>
-                    <div className="tagline float-right">Become debt-free, money-smart, and achieve financial independence</div>
-                    <nav className="navbar navbar-expand-lg navbar-light bg-light" id="mainNav">
-                        <div className="collapse navbar-collapse">
-                        <ul className="navbar-nav mr-auto">
-                            <li className="nav-item">
-                                <Link to={"/"} className="nav-link">Home</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to={"/archives"} className="nav-link">Archives</Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to={"/new-blog"} className="nav-link">Create New Post</Link>
-                            </li>
-                        </ul>
-                        </div>
-                    </nav>
+                    <header className="sticky-top bg-white">
+                        <Link to={"/"} className="navbar-brand">Confronting Debt</Link>
+                        <nav className="navbar navbar-expand-sm navbar-light bg-light" id="mainNav">
+                            <div className="collapse navbar-collapse">
+                            <ul className="navbar-nav mr-auto">
+                                <li className="nav-item">
+                                    <Link to={"/"} className="nav-link">Home</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to={"/archives"} className="nav-link">Archives</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to={"/new-blog"} className="nav-link">Create New Post</Link>
+                                </li>
+                            </ul>
+                            </div>
+                        </nav>
+                    </header>
                     <Switch>
                         <Route exact path="/new-blog" component={ Create } />
                         <Route path="/archives" component={ Archive } />
