@@ -12,8 +12,9 @@ class App extends Component {
         return (
             <Router>
                 <div className="container">
-                    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                        <Link to={"/"} className="navbar-brand">Confronting Debt</Link>
+                    <Link to={"/"} className="navbar-brand">Confronting Debt</Link>
+                    <div className="tagline float-right">Become debt-free, money-smart, and achieve financial independence</div>
+                    <nav className="navbar navbar-expand-lg navbar-light bg-light" id="mainNav">
                         <div className="collapse navbar-collapse">
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item">
@@ -28,12 +29,16 @@ class App extends Component {
                         </ul>
                         </div>
                     </nav>
-                    <h2>Welcome to ConfrontingDebt.com!</h2>
-                    <h3>Become debt-free, money-smart, and achieve financial independence</h3>
                     <Switch>
                         <Route exact path="/new-blog" component={ Create } />
                         <Route path="/archives" component={ Archive } />
                     </Switch>
+                    <footer id="mainFooter">
+                        <div className="footer-copyright text-center py-3 bg-light">
+                            © 2019 Copyright:&nbsp;
+                            <a href="http://timwinfred.com/" target="_blank">TimWinfred.com</a>
+                        </div>
+                    </footer>
                 </div>
             </Router>
         );

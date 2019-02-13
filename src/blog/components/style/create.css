@@ -1,0 +1,8 @@
+#publishBtnContainer {
+    position: relative;
+    height: 38px;
+}
+#publishBtn {
+    position: absolute;
+    right: 0;
+}
