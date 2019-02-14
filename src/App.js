@@ -4,7 +4,7 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 import Create from './blog/components/create.component';
-import Edit from './blog/components/edit.component';
+// import Edit from './blog/components/edit.component';
 import Archive from './blog/components/archive.component';
 
 class App extends Component {
@@ -37,7 +37,7 @@ class App extends Component {
                     <footer id="mainFooter">
                         <div className="footer-copyright text-center py-3 bg-light">
                             © 2019 Copyright:&nbsp;
-                            <a href="http://timwinfred.com/" target="_blank">TimWinfred.com</a>
+                            <a href="http://timwinfred.com/" target="_blank" rel="noopener noreferrer">TimWinfred.com</a>
                         </div>
                     </footer>
                 </div>
