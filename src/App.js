@@ -32,7 +32,7 @@ class App extends Component {
                     </header>
                     <Switch>
                         <Route exact path="/new-blog" component={ Create } />
-                        <Route path="/archives" component={ Archive } />
+                        <Route exact path="/archives" component={ Archive } />
                     </Switch>
                     <footer id="mainFooter">
                         <div className="footer-copyright text-center py-3 bg-light">

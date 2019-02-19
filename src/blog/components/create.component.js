@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './style/create.css';
+import axios from 'axios';
 
 export default class Create extends Component {
     constructor(props){
@@ -8,6 +9,7 @@ export default class Create extends Component {
         this.onChangeBlogContent = this.onChangeBlogContent.bind(this);
         this.onChangeBlogCategories = this.onChangeBlogCategories.bind(this);
         this.onChangeBlogTags = this.onChangeBlogTags.bind(this);
+        this.onChangeBlogSlug = this.onChangeBlogSlug.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
@@ -15,6 +17,7 @@ export default class Create extends Component {
             blog_content: '',
             blog_categories: '',
             blog_tags: '',
+            blog_slug: '',
         }
     }
     onChangeBlogTitle(e){
@@ -37,15 +40,35 @@ export default class Create extends Component {
             blog_tags: e.target.value,
         });
     }
+    onChangeBlogSlug(e){
+        this.setState({
+            blog_slug: e.target.value,
+        });
+    }
 
     onSubmit(e){
         e.preventDefault();
+        console.log(this.state);
+        const blogObj = {
+            blog_title: this.state.blog_title,
+            blog_content: this.state.blog_content,
+            blog_categories: this.state.blog_categories,
+            blog_tags: this.state.blog_tags,
+            blog_slug: this.state.blog_slug,
+        };
+        axios.post('http://localhost:4000/blog/add', blogObj).then(
+            res => {
+                console.log(res.data);
+                window.location.href = '/blog/post/' + res.data.data._id;
+            }
+        );
         this.setState({
             blog_title: '',
             blog_content: '',
             blog_categories: '',
             blog_tags: '',
-        })
+            blog_slug: '',
+        });
     }
 
     render(){
@@ -97,7 +120,15 @@ export default class Create extends Component {
                             </div>
                         </div>
                     </div>
-                    
+                    <div className="form-group">
+                        <label htmlFor="blogSlug">Blog Slug</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="blogSlug"
+                            value={this.state.blog_slug}
+                            onChange={this.onChangeBlogSlug}/>
+                    </div>
                     <div className="form-group" id="publishBtnContainer">
                         <input
                             type="submit"
