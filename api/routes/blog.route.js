@@ -35,8 +35,22 @@ blogRoutes.route('/archives').get((req,res) => {
     });
 });
 
-// Get One Blog from DB
-blogRoutes.route('/post/:id').get((req,res) => {
+// Get One Blog from DB - Blog Slug
+blogRoutes.route('/post/:blog_slug').get((req,res) => {
+    Blog.findOne({blog_slug: req.params.blog_slug}, (err,blog) => {
+        if(err){
+            console.error(err);
+            res.status(400).send('Unable to get blog from database');
+        }else if(!blog){
+            res.status(404).send('No blog found in database');
+        }else{
+            res.status(200).json(blog);
+        }
+    });
+});
+
+// Get One Blog from DB - Blog ID
+blogRoutes.route('/post/id/:id').get((req,res) => {
     Blog.findById(req.params.id, (err,blog) => {
         if(err){
             console.error(err);

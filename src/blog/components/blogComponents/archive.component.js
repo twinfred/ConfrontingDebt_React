@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import BlogPostPreview from './blogComponents/BlogPostPreview';
+import BlogPostCard from './BlogPostCard';
 
 export default class Archive extends Component {
 
@@ -12,7 +12,6 @@ export default class Archive extends Component {
         axios.get('http://localhost:4000/blog/archives').then(
             response => {
                 this.setState({ blog: response.data });
-                console.log(this.state.blog);
             }
         ).catch(
             error => {
@@ -21,9 +20,9 @@ export default class Archive extends Component {
         );
     }
 
-    blogPostPreview(){
+    blogPostCard(){
         return this.state.blog.map((object,i) => {
-            return <BlogPostPreview obj={object} key={i} />;
+            return <BlogPostCard obj={object} key={i} />;
         });
     }
 
@@ -32,7 +31,7 @@ export default class Archive extends Component {
             <div>
                 <h4>Blog Post Archives</h4>
                 <div id="blogArchivesContainer">
-                    { this.blogPostPreview() }
+                    { this.blogPostCard() }
                 </div>
             </div>
         );
