@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './style/create.css';
+import '../style/create.css';
 import axios from 'axios';
 
 export default class Create extends Component {
